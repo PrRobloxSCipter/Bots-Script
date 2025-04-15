@@ -693,6 +693,11 @@ OwnerPlayer.Chatted:Connect(function(msg)
 end)
 task.wait()
 
+game.Players.PlayerRemoving:Connect(function(player)
+  if player == OwnerPlayer then
+    game:Shutdown()
+  end
+end)
 local HelloWorld = {
   "Hello World ! ",
   "do you like cookies?",
