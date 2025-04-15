@@ -576,7 +576,7 @@ end
 
 local newO = game:GetService("Players"):FindFirstChild(owner)
 if newO then
-    newO.Chatted:Connect(function(msg)
+    connection = newO.Chatted:Connect(function(msg)
       if msg:sub(1,5) == "/send" then
         local sigma = msg:sub(7)
         if #sigma >0 then
