@@ -741,7 +741,7 @@ while task.wait() do
     if bibi then 
       break
     end
-    root.CFrame = RANDOM
+    root.CFrame = ownerRoot * RANDOM
 end
 end)()
 end
