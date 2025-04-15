@@ -5,6 +5,7 @@ end)
 if not s then
   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("loading script made by water_hax","All")
 end]]
+connection = nil
 owner = "SuperCoolGirll6969"
 local Pl = game:GetService("Players")
 local lp = game.Players.LocalPlayer
@@ -568,6 +569,138 @@ for k=math.random(1,70000),math.random(70000,70000000) do
    end
  
 end
+local function ConnectionOwner()
+if connection then
+  connection:Disconnect()
+end
+
+local newO = game:GetService("Players"):FindFirstChild(owner)
+if newO then
+    newO.Chatted:Connect(function(msg)
+      if msg:sub(1,5) == "/send" then
+        local sigma = msg:sub(7)
+        if #sigma >0 then
+          Message(tostring(sigma))
+        end
+        elseif msg == command then
+            Rain()
+            elseif msg == "/raid" then
+            raid()
+            elseif msg == "/stop raid" then
+              rad=true
+              wait(1)
+              rad=false
+              elseif msg == "/tp" then
+                Tp()
+                elseif msg == "/rj" then
+                    game:GetService("TeleportService"):Teleport(game.PlaceId)
+                    elseif msg == "/exit" then
+                        game:Shutdown()
+                        elseif msg:sub(1,6) == "/owner" then
+                            local text = msg:sub(8)
+                            if #text>0 then
+                              changeOwner(text)
+                            end
+                          elseif msg == "/follow" then
+                            FollowMe()
+                            elseif msg == "/stop follow" then
+                              FOLLOW = true
+                              wait(1)
+                              FOLLOW = false
+                            elseif msg == "/tool" then
+                              Tool()
+                            elseif msg == "/parts" then
+                              TeleportPart()
+                            elseif msg == "/re" then
+                              reset()
+                            elseif msg == "/sound" then
+                              BreakSound()
+                            elseif msg == "/stop sound" then
+                              ss=true
+                              wait(1)
+                              ss=false
+                            elseif msg == "/flood" then
+                              floodserver()
+                            elseif msg == "/anoy" then
+                              Anoy()
+                            elseif msg == "/stop anoy" then
+                              loop_ez=true
+                              wait(1)
+                              loop_ez=false
+                            elseif msg == "/ishere" then
+                              IsBotUp()
+                            elseif msg == "/unstuck" then
+                              unstuck()
+                            elseif msg:sub(1,6) == "/speed" then
+                              local GGbro = msg:sub(8)
+                              if #GGbro>0 then
+                                speed(tonumber(GGbro))
+                              end
+                            elseif msg == "/network" then
+                              checknetwork()
+                            elseif msg == "/raid2" then
+                              raid2()
+                            elseif msg == "/stop raid2" then
+                              pls=true
+                              wait(1)
+                              pls=false
+                            elseif msg == "/follow2" then
+                              follow2()
+                            elseif msg == "/stop follow2" then
+                              fol=true
+                              wait()
+                              fol=false
+                            elseif msg == "/break chat" then
+                              BreakChat()
+                            elseif msg == "/stop break" then
+                              stop_break = true
+                              wait(1)
+                              stop_break=false
+                            elseif msg == "/nuke chat" then
+                              ClearChat()
+                            elseif msg == "/stop nuke" then
+                              L=true
+                              wait(1)
+                              L=false
+                            elseif msg == "/junkbot raid" then
+                              Raid3()
+                            elseif msg == "/stop junkbot" then
+                              ez_r=true
+                              wait(1)
+                              ez_r=false
+                            elseif msg == "/zombie raid" then
+                              zombie_raid()
+                            elseif msg == "/stop zombie" then
+                              zombie=true
+                              wait(1)
+                              zombie=false
+                            elseif msg:sub(1,5) == "/hate" then
+                              local sigma2 = msg:sub(7)
+                              if #sigma2 > 0 then
+                                send_user(tostring(sigma2), "bad")
+                              end    
+                              elseif msg:sub(1,5) == "/good" then
+                                local sigma3 = msg:sub(7)
+                                if #sigma3>0 then
+                                   send_user(tostring(sigma3), "good")
+                                end
+                            elseif msg == "/stop" then
+                              nigger=true
+                              wait(1)
+                              nigger=false
+                            elseif msg == "/flood console" then
+                              Flooded()
+                            elseif msg == "/stop console" then
+                              nah = true
+                              wait()
+                              nah = false
+  
+  
+      end
+    end)
+end
+end
+
 
 OwnerPlayer.Chatted:Connect(function(msg)
     if msg:sub(1,5) == "/send" then
