@@ -720,10 +720,10 @@ local bibi = false
 local function JojoStand()
   OwnerPlayer.CharacterAdded:Connect(function(d)
    OwnerCharacter = d
-   lp.CharacterAdded:Connect(function(d)
+  end)
+  lp.CharacterAdded:Connect(function(d)
     char = d
    end)
-  end)
   ownerRoot = OwnerCharacter:FindFirstChild("HumanoidRootPart")
   root = OwnerCharacter:FindFirstChild("HumanoidRootPart")
 
