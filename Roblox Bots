@@ -110,8 +110,8 @@ end
 local function changeOwner(new)
   for i,v in next, game:GetService("Players"):GetPlayers() do
        if string.find(v.Name, new) then
-           connection:Disconnect()
            owner = v.Name
+           connection:Disconnect()
            local s,err = pcall(function()
            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("new owner is : " .. owner)
            end)
