@@ -725,7 +725,7 @@ local function JojoStand()
     char = d
    end)
   ownerRoot = OwnerCharacter:FindFirstChild("HumanoidRootPart")
-  root = OwnerCharacter:FindFirstChild("HumanoidRootPart")
+  root = lp:FindFirstChild("HumanoidRootPart")
 
   local ranPos = {
     ownerRoot.CFrame * CFrame.new(0,4,0),
