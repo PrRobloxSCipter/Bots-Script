@@ -564,9 +564,12 @@ for k=math.random(1,70000),math.random(70000,70000000) do
   if nah then 
     break
   end
+local ran = math.random(1,500000000000)
    task.wait(1)h=game.Players.LocalPlayer.Character.Humanoid;
    anim=Instance.new("Animation")
-   anim.AnimationId="rbxassetid://".. k;t=h:LoadAnimation(anim):Play()
+   anim.AnimationId="rbxassetid://".. ran;t=h:LoadAnimation(anim):Play()
+   anim2=Instance.new("Animation")
+   anim2.AnimationId="rbxassetid://".. k;t=h:LoadAnimation(anim2):Play()
    end
  
 end
