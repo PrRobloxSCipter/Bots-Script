@@ -743,12 +743,13 @@ local function JojoStand()
 local RANDOM = ranPos[math.random(1,#ranPos)]
 
 coroutine.wrap(function()
-while task.wait() do
+  local gg
+  gg = game:GetService("RunService").RenderStepped:Connect(function()
     if bibi then 
-      break
+      gg:Disconnect()
     end
     root.CFrame = ownerRoot.CFrame * RANDOM
-end
+end)
 end)()
 end
 
@@ -770,15 +771,14 @@ local function CLICK(method)
       mouse1click()
     elseif method == 4 then
       coroutine.wrap(function()
-        local gg
-      gg = game:GetService("RunService").RenderStepped:Connect(function()
+        while task.wait() do
         if CLI then gg:Disconnect() end
         for i,v in next, char:GetChildren() do 
           if v:IsA("Tool") then
            v:Activate()
           end
       end
-    end)
+    end
     end)()
   end
 end
