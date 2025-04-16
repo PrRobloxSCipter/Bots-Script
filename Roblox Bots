@@ -746,6 +746,7 @@ end
 end)()
 end
 
+local CLI = false
 local function CLICK(method)
   lp.CharacterAdded:Connect(function(d)
     char = d
@@ -761,6 +762,17 @@ local function CLICK(method)
       Vir:SendMouseButtonEvent(0, 0, 0, false, game, 0)
     elseif method == 3 then
       mouse1click()
+    elseif method == 4 then
+      coroutine.wrap(function()
+      while task.wait() do
+        if CLI then break end
+        for i,v in next, char:GetChildren() do 
+          if v:IsA("Tool") then
+           v:Activate()
+          end
+      end
+      end
+    end)()
   end
 end
 
