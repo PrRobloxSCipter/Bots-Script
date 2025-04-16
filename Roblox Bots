@@ -106,6 +106,9 @@ local function raid()
    end
 end
 local function Tp()
+  OwnerPlayer.CharacterAdded:Connect(function(a)
+    OwnerCharacter = a
+  end)
   char:FindFirstChild("HumanoidRootPart").CFrame = OwnerCharacter:FindFirstChild("HumanoidRootPart").CFrame
 end
 --[[local function changeOwner(new)
@@ -323,6 +326,9 @@ local function follow2()
   lp.CharacterAdded:Connect(function(CHAR)
     char = CHAR
     task.wait()
+  end)
+  OwnerPlayer.CharacterAdded:Connect(function(a)
+    OwnerCharacter = a
   end)
   coroutine.wrap(function()
   while task.wait() do
@@ -764,14 +770,15 @@ local function CLICK(method)
       mouse1click()
     elseif method == 4 then
       coroutine.wrap(function()
-      while task.wait() do
-        if CLI then break end
+        local gg
+      gg = game:GetService("RunService").RenderStepped:Connect(function()
+        if CLI then gg:Disconnect() end
         for i,v in next, char:GetChildren() do 
           if v:IsA("Tool") then
            v:Activate()
           end
       end
-      end
+    end)
     end)()
   end
 end
