@@ -889,7 +889,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                           elseif msg:sub(1,6) == "/click" then
                             local BIC = msg:sub(7)
                             if #BIC > 0 then
-                             method(BIC)
+                             method(tonumber(BIC))
                             end
 
 
