@@ -790,7 +790,7 @@ local function Attack(victim)
   lp.CharacterAdded:Connect(function(d)
     char = d
   end)
-  for i,v in next, Pl:GetPlayers() do
+  for i,v in next, game:GetService("Players"):GetPlayers() do
     if string.find(v.Name, victim) then
       coroutine.wrap(function()
         while task.wait() do
@@ -930,7 +930,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                              CLICK(tonumber(BIC))
                             end
                           elseif msg:sub(1,7) == "/attack" then
-                            local HH = msg:sub(8)
+                            local HH = msg:sub(7)
                             if #HH >0 then
                               Attack(HH)
                             end
