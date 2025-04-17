@@ -23,9 +23,7 @@ local OwnerCharacter = OwnerPlayer.Character
 
 local char = lp.Character or lp.CharacterAdded:Wait()
 local Hum = char:WaitForChild("Humanoid")
-pcall(function()
 --local root = char:WaitForChild"HumanoidRootPart"
-end)
 local stop = false
 
 update=function()
