@@ -793,9 +793,10 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-      char.CFrame = CFrame.new(math.random(0.001,2),math.random(0.001,2),math.random(0.001,2))  
+            char.CFrame = CFrame.new(math.random(0.001,2),math.random(0.001,2),math.random(0.001,2))
         end
       end)()
+    end
   end
 end
 
@@ -927,7 +928,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                              CLICK(tonumber(BIC))
                             end
                           elseif msg:sub(1,7) == "/attack" then
-                            local HH = msg:sub(7)
+                            local HH = msg:sub(8)
                             if #HH >0 then
                               Attack(HH)
                             end
