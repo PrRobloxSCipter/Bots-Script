@@ -1,4 +1,5 @@
 warn("undetected version.")
+coroutine.wrap(function()
 --[[local s,err=pcall(function()
 return game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("loading script made by water_hax")
 end)
@@ -23,7 +24,7 @@ local OwnerCharacter = OwnerPlayer.Character
 
 local char = lp.Character or lp.CharacterAdded:Wait()
 local Hum = char:WaitForChild("Humanoid")
---local root = char:WaitForChild"HumanoidRootPart"
+local root = char:WaitForChild"HumanoidRootPart"
 local stop = false
 
 update=function()
@@ -963,6 +964,7 @@ end)
 if not s then
   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ff,"All")
 end
+end)()
 
 -- loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/PrRobloxSCipter/hello-world/refs/heads/main/spioder"))()
 
