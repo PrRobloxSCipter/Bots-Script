@@ -23,6 +23,7 @@ local OwnerCharacter = OwnerPlayer.Character
 
 local char = lp.Character or lp.CharacterAdded:Wait()
 local Hum = char:WaitForChild("Humanoid")
+repeat task.wait() until game.Players.LocalPlayer.Character.HumanoidRootPart
 local root = char:WaitForChild"HumanoidRootPart"
 local stop = false
 
@@ -773,7 +774,7 @@ local function CLICK(method)
     elseif method == 4 then
       coroutine.wrap(function()
         while task.wait() do
-        if CLI then gg:Disconnect() end
+        if CLI then break end
         for i,v in next, char:GetChildren() do 
           if v:IsA("Tool") then
            v:Activate()
@@ -794,6 +795,8 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
+          Tool()
+          method(4)
             char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(0.1,2),math.random(0.1,1),math.random(0.1,2))
         end
       end)()
