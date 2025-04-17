@@ -8,6 +8,7 @@ end]]
 connection = nil
 owner = "SuperCoolGirll6969"
 local Pl = game:GetService("Players")
+local tween = game:GetService("TweenService")
 local Vir = game:GetService("VirtualInputManager")
 local lp = game.Players.LocalPlayer
 local command = "/rain"
@@ -793,7 +794,7 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-            char.CFrame = CFrame.new(math.random(0.001,2),math.random(0.001,2),math.random(0.001,2))
+            char.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(0.1,2),math.random(0.1,2),math.random(0.1,2))
         end
       end)()
     end
