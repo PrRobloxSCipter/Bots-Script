@@ -786,7 +786,6 @@ end
 
 ATTACK = false
 local function Attack(victim)
-  print("q")
   lp.CharacterAdded:Connect(function(d)
     char = d
   end)
@@ -795,7 +794,7 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-            char.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(0.1,3),math.random(0.1,2),math.random(0.1,3))
+            char:FindFirstChild("HumanoidRootPart").CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(0.1,3),math.random(0.1,2),math.random(0.1,3))
         end
       end)()
     end
