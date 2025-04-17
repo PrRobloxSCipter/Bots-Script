@@ -783,6 +783,22 @@ local function CLICK(method)
   end
 end
 
+ATTACK = false
+local function Attack(victim)
+  lp.CharacterAdded:Connect(function(d)
+    char = d
+  end)
+  for i,v in next, Pl:GetPlayers() do
+    if string.find(v.Name, victim) then
+      coroutine.wrap(function()
+        while task.wait() do
+          if ATTACK then break end
+      char.CFrame = CFrame.new(math.random(0.001,2),math.random(0.001,2),math.random(0.001,2))  
+        end
+      end)()
+  end
+end
+
 connection = OwnerPlayer.Chatted:Connect(function(msg)
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
@@ -909,6 +925,11 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             local BIC = msg:sub(7)
                             if #BIC > 0 then
                              CLICK(tonumber(BIC))
+                            end
+                          elseif msg:sub(1,7) == "/attack" then
+                            local HH = msg:sub(7)
+                            if #HH >0 then
+                              Attack(HH)
                             end
 
 
