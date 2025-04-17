@@ -932,6 +932,8 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             if #HH >0 then
                               Attack(HH)
                             end
+                          elseif msg == "/stop attack" then
+                            ATTACK=true;wait()ATTACK=false
 
 
     end
