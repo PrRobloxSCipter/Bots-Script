@@ -737,10 +737,10 @@ local function JojoStand()
   root = char:WaitForChild("HumanoidRootPart")
 
   local ranPos = {
-    CFrame.new(4,0,0),
-    CFrame.new(0,0,4),
-    CFrame.new(-4,0,0),
-    CFrame.new(0,0,-4),
+    CFrame.new(6,0,0),
+    CFrame.new(0,0,6),
+    CFrame.new(-6,0,0),
+    CFrame.new(0,0,-6),
   }
 local RANDOM = ranPos[math.random(1,#ranPos)]
 
