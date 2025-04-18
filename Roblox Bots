@@ -750,7 +750,7 @@ coroutine.wrap(function()
     if bibi then 
       gg:Disconnect()
     end
-    root.CFrame = ownerRoot.CFrame * RANDOM + ownerRoot.Velocity * 1
+    root.CFrame = ownerRoot.CFrame * RANDOM + ownerRoot.Velocity * 0.5
 end)
 end)()
 end
