@@ -817,7 +817,7 @@ local function WATERHAX()
       end)
 
       if not s then
-        local random = RAID[math.random(1, #RAID)]
+        local random = WATER_HAX[math.random(1, #WATER_HAX)]
          game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(random,"All")
        end
 end
