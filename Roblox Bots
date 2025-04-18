@@ -746,7 +746,7 @@ local RANDOM = ranPos[math.random(1,#ranPos)]
 
 coroutine.wrap(function()
   local gg
-  gg = game:GetService("RunService").RenderStepped:Connect(function()
+  gg = game:GetService("RunService").Heartbeat:Connect(function()
     if bibi then 
       gg:Disconnect()
     end
@@ -795,8 +795,6 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-          Tool()
-          method(1)
             char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(0.1,2),math.random(0.1,1),math.random(0.1,2))
         end
       end)()
@@ -817,7 +815,7 @@ local function WATERHAX()
       local random = WATER_HAX[math.random(1, #WATER_HAX)]
          game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(random)
       end)
-      
+
       if not s then
         local random = RAID[math.random(1, #RAID)]
          game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(random,"All")
