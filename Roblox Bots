@@ -795,7 +795,7 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-            char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(0.1,2),math.random(0.1,1),math.random(0.1,2))
+            char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(1,2),math.random(1,2),math.random(1,2))
         end
       end)()
     end
