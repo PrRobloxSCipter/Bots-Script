@@ -821,7 +821,7 @@ local function WATERHAX()
          game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(random,"All")
        end
 end
-
+local ttt = false
 local function Titan()
   OwnerPlayer.CharacterAdded:Connect(function(d)
     OwnerCharacter = d
@@ -830,6 +830,10 @@ local function Titan()
    char = d
   end)
 root = char:FindFirstChild("HumanoidRootPart")
+coroutine.wrap(function()
+  while task.wait() do
+    OwnerCharacter.Humanoid.HipHeight = 5
+    if ttt then break end
   if lp.Name == "leBotDeRoblox_1" then
     root.CFrame = OwnerCharacter:WaitForChild("Torso").CFrame
   elseif lp.Name == "leBotDeRoblox_2" then
@@ -840,6 +844,8 @@ root = char:FindFirstChild("HumanoidRootPart")
     root.CFrame = OwnerCharacter:WaitForChild("LeftLeg").CFrame
   elseif lp.Name == "leBotDeRoblox_7" then
     root.CFrame = OwnerCharacter:WaitForChild("RightLeg").CFrame
+  end
+end)()
   end
 end
 
@@ -981,7 +987,8 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             WATERHAX()
                           elseif msg == "/titan" then
                             Titan()
-                          
+                          elseif msg =="/stop titan" then
+                            ttt=true;wait()ttt=false
 
 
     end
