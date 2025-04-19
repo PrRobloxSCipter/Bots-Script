@@ -822,6 +822,27 @@ local function WATERHAX()
        end
 end
 
+local function Titan()
+  OwnerPlayer.CharacterAdded:Connect(function(d)
+    OwnerCharacter = d
+  end)
+  lp.CharacterAdded:Connect(function(d)
+   char = d
+  end)
+root = char:FindFirstChild("HumanoidRootPart")
+  if lp.Name == "leBotDeRoblox_1" then
+    root.CFrame = char:FindFirstChild("Torso").CFrame
+  elseif lp.Name == "leBotDeRoblox_2" then
+    root.CFrame = char:FindFirstChild("RightArm").CFrame
+  elseif lp.Name == "leBotDeRoblox_3" then
+    root.CFrame = char:FindFirstChild("LeftArm").CFrame
+  elseif lp.Name == "leBotDeRoblox_4" then
+    root.CFrame = char:FindFirstChild("LeftLeg").CFrame
+  elseif lp.Name == "leBotDeRoblox_7" then
+    root.CFrame = char:FindFirstChild("RightLeg").CFrame
+  end
+end
+
 connection = OwnerPlayer.Chatted:Connect(function(msg)
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
