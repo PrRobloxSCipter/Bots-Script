@@ -837,13 +837,13 @@ coroutine.wrap(function()
   if lp.Name == "leBotDeRoblox_1" then
     root.CFrame = OwnerCharacter:WaitForChild("Torso").CFrame
   elseif lp.Name == "leBotDeRoblox_2" then
-    root.CFrame = OwnerCharacter:WaitForChild("RightArm").CFrame
+    root.CFrame = OwnerCharacter:WaitForChild("Right Arm").CFrame
   elseif lp.Name == "leBotDeRoblox_3" then
-    root.CFrame = OwnerCharacter:WaitForChild("LeftArm").CFrame
+    root.CFrame = OwnerCharacter:WaitForChild("Left Arm").CFrame
   elseif lp.Name == "leBotDeRoblox_4" then
-    root.CFrame = OwnerCharacter:WaitForChild("LeftLeg").CFrame
+    root.CFrame = OwnerCharacter:WaitForChild("Left Leg").CFrame
   elseif lp.Name == "leBotDeRoblox_7" then
-    root.CFrame = OwnerCharacter:WaitForChild("RightLeg").CFrame
+    root.CFrame = OwnerCharacter:WaitForChild("Right Leg").CFrame
   end
 
 end
