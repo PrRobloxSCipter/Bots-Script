@@ -979,6 +979,8 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             ATTACK=true;wait()ATTACK=false
                           elseif msg == "/credit" then
                             WATERHAX()
+                          elseif msg == "/titan" then
+                            Titan()
                           
 
 
