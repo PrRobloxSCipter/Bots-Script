@@ -845,8 +845,9 @@ coroutine.wrap(function()
   elseif lp.Name == "leBotDeRoblox_7" then
     root.CFrame = OwnerCharacter:WaitForChild("RightLeg").CFrame
   end
-end)()
-  end
+
+end
+  end)()
 end
 
 connection = OwnerPlayer.Chatted:Connect(function(msg)
