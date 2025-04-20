@@ -831,20 +831,21 @@ local function Titan()
   end)
 root = char:FindFirstChild("HumanoidRootPart")
 up = CFrame.new(0,10,0)
+
+
 coroutine.wrap(function()
   while task.wait() do
-    OwnerCharacter.Humanoid.HipHeight = 5
     if ttt then break end
   if lp.Name == "leBotDeRoblox_1" then
-    root.CFrame = OwnerCharacter:WaitForChild("Torso").CFrame * up
+    root.CFrame = OwnerCharacter:WaitForChild("Torso").CFrame
   elseif lp.Name == "leBotDeRoblox_2" then
-    root.CFrame = OwnerCharacter:WaitForChild("Right Arm").CFrame* up
+    root.CFrame = OwnerCharacter:WaitForChild("Right Arm").CFrame * CFrame.new(0,0,4)
   elseif lp.Name == "leBotDeRoblox_3" then
-    root.CFrame = OwnerCharacter:WaitForChild("Left Arm").CFrame* up
+    root.CFrame = OwnerCharacter:WaitForChild("Left Arm").CFrame * CFrame.new(4,0,0)
   elseif lp.Name == "leBotDeRoblox_4" then
-    root.CFrame = OwnerCharacter:WaitForChild("Left Leg").CFrame* up
+    root.CFrame = OwnerCharacter:WaitForChild("Left Leg").CFrame * CFrame.new(0,-4,0)
   elseif lp.Name == "leBotDeRoblox_7" then
-    root.CFrame = OwnerCharacter:WaitForChild("Right Leg").CFrame* up
+    root.CFrame = OwnerCharacter:WaitForChild("Right Leg").CFrame * CFrame.new(0,-4,0)
   end
 end
   end)()
