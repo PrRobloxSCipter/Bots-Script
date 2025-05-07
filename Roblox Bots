@@ -759,14 +759,14 @@ local function align(part, tar, pos)
   a1 = Instance.new("Attachment", tar)
   a1.Position = pos or Vector3.zero
 
-  ap = Instance.new("AlignPosition", tar)
+  ap = Instance.new("AlignPosition", part)
   ap.MaxForce = math.huge
   ap.Attachment0 = a0
   ap.Attachment1 = a1
   ap.RigidityEnabled = true
   ap.Responsiveness = 200
   
-  ao = Instance.new("AlignOrientation", tar)
+  ao = Instance.new("AlignOrientation", part)
   ao.Attachment0 = a0
   ao.Attachment1 = a1
   ao.RigidityEnabled = true
