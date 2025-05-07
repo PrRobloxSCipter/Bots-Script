@@ -764,13 +764,13 @@ local function align(part, tar, pos)
   ap.Attachment0 = a0
   ap.Attachment1 = a1
   ap.RigidityEnabled = true
-  ap.Responsiveness = 200
+  ap.Responsiveness = 10000
   
   ao = Instance.new("AlignOrientation", part)
   ao.Attachment0 = a0
   ao.Attachment1 = a1
   ao.RigidityEnabled = true
-  ao.Responsiveness = 200
+  ao.Responsiveness = 10000
   ao.MaxTorque = math.huge
 end
 align(root, ownerRoot, RANDOM)
