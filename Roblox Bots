@@ -1013,6 +1013,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                           elseif msg == "/stand" then
                             JojoStand()
                           elseif msg == "/stop stand" then
+                            Hum.PlatformStand = false
                             ao:Destroy()
                             ap:Destroy()
                             a0:Destroy();a1:Destroy()
@@ -1036,6 +1037,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             ao:Destroy()
                             ap:Destroy()
                             a0:Destroy();a1:Destroy()
+                            Hum.PlatformStand = false
 
 
     end
