@@ -1,13 +1,22 @@
 warn("undetected version.")
 coroutine.wrap(function()
---[[local s,err=pcall(function()
-return game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("loading script made by water_hax")
-end)
-if not s then
-  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("loading script made by water_hax","All")
-end]]
 connection = nil
-owner = "SuperCoolGirll6969"
+local LIST = {
+  "SuperCoolGirll6969",
+  "Rc7557",
+  "swado2012",
+  "RaspDev_T",
+  "water_hax",
+}
+for i,v in next, game.Players:GetPlayers() do
+  for _,A in next, LIST do
+    if v.Name == A then
+     getgenv().owner = tostring(A)
+     break
+    end
+  end
+end
+
 local Pl = game:GetService("Players")
 local tween = game:GetService("TweenService")
 local Vir = game:GetService("VirtualInputManager")
