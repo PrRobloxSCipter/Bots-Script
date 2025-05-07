@@ -1044,7 +1044,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             ATTACK=true;wait()ATTACK=false
                           elseif msg == "/credit" then
                             WATERHAX()
-                          elseif msg:(1,6) == "/titan" then
+                          elseif msg:sub(1,6)=="/titan" then
                                  local hax = msg(8)
                                  if #hax > 0 then
                                    Titan(hax)
