@@ -1049,7 +1049,6 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                                  if #hax > 0 then
                                    Titan(hax)
                                  end
-                            Titan()
                           elseif msg =="/stop titan" then
                             ao:Destroy()
                             ap:Destroy()
