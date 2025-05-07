@@ -747,10 +747,10 @@ local function JojoStand()
   root = char:WaitForChild("HumanoidRootPart")
 
   local ranPos = {
-    CFrame.new(6,0,0),
-    CFrame.new(0,0,6),
-    CFrame.new(-6,0,0),
-    CFrame.new(0,0,-6),
+    Vector3.new(6,0,0),
+    Vector3.new(0,0,6),
+    Vector3.new(-6,0,0),
+    Vector3.new(0,0,-6),
   }
 local RANDOM = ranPos[math.random(1,#ranPos)]
 
@@ -773,7 +773,7 @@ local function align(part, tar, pos)
   ao.Responsiveness = 200
   ao.MaxTorque = math.huge
 end
-align(root, ownerRoot, ownerRoot.CFrame * RANDOM)
+align(root, ownerRoot, ownerRoot.Position + RANDOM)
 end
 
 local CLI = false
