@@ -745,15 +745,26 @@ local function JojoStand()
   }
 local RANDOM = ranPos[math.random(1,#ranPos)]
 
-coroutine.wrap(function()
-  local gg
-  gg = game:GetService("RunService").Heartbeat:Connect(function()
-    if bibi then 
-      gg:Disconnect()
-    end
-    root.CFrame = ownerRoot.CFrame * RANDOM + ownerRoot.Velocity * 0.5
-end)
-end)()
+local function align(part, tar, pos)
+  a0 = Instance.new("Attachment", part)
+  a1 = Instance.new("Attachment", tar)
+  a1.Position = pos or Vector3.zero
+
+  ap = Instance.new("AlignPosition", tar)
+  ap.MaxForce = math.huge
+  ap.Attachment0 = a0
+  ap.Attachment1 = a1
+  ap.RigidityEnabled = true
+  ap.Responsiveness = 200
+  
+  ao = Instance.new("AlignOrientation", tar)
+  ao.Attachment0 = a0
+  ao.Attachment1 = a1
+  ao.RigidityEnabled = true
+  ao.Responsiveness = 200
+  ao.MaxTorque = math.huge
+end
+align(root, ownerRoot, ownerRoot * RANDOM)
 end
 
 local CLI = false
@@ -840,8 +851,8 @@ local LL = OwnerCharacter:FindFirstChild("Left Leg") or OwnerCharacter:FindFirst
 Hum = char:WaitForChild("Humanoid")
 Hum.PlatformStand = true
    local function align(part, tar, pos)
-      local a0 = Instance.new("Attachment", part)
-      local a1 = Instance.new("Attachment", tar)
+      a0 = Instance.new("Attachment", part)
+      a1 = Instance.new("Attachment", tar)
       a1.Position = pos or Vector3.zero
 
       ap = Instance.new("AlignPosition", tar)
@@ -993,7 +1004,9 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                           elseif msg == "/stand" then
                             JojoStand()
                           elseif msg == "/stop stand" then
-                            bibi=true;wait()bibi=false
+                            ao:Destroy()
+                            ap:Destroy()
+                            a0:Destroy();a1:Destroy()
                           elseif msg:sub(1,6) == "/click" then
                             local BIC = msg:sub(7)
                             if #BIC > 0 then
