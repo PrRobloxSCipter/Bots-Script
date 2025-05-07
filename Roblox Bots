@@ -637,7 +637,7 @@ if newO then
                               loop_ez=true
                               wait(1)
                               loop_ez=false
-                            elseif msg == "/ishere" then
+                            elseif msg == "/e ishere" then
                               IsBotUp()
                             elseif msg == "/unstuck" then
                               unstuck()
@@ -835,7 +835,7 @@ torso = char:FindFirstChild("Torso") or OwnerCharacter:FindFirstChild("UpperTors
 local TOR = OwnerCharacter:FindFirstChild("Torso") or OwnerCharacter:FindFirstChild("UpperTorso")
 local RA = OwnerCharacter:FindFirstChild("Right Arm") or OwnerCharacter:FindFirstChild("RightUpperArm")
 local LA = OwnerCharacter:FindFirstChild("Left Arm") or OwnerCharacter:FindFirstChild("LeftUpperArm")
-local RL = OwnerCharacter:FindFirstChild("Right Leg") or OwnerCharacter:FindFirstChild("RightUpperLeg")
+local RL = OwnerCharacter:FindFirstChild("Right Leg") or OwnerCharacter:FindFirstChild("RightLowerLeg")
 local LL = OwnerCharacter:FindFirstChild("Left Leg") or OwnerCharacter:FindFirstChild("LeftLowerLeg")
 Hum = char:WaitForChild("Humanoid")
 Hum.PlatformStand = true
