@@ -831,7 +831,7 @@ local function Titan()
   lp.CharacterAdded:Connect(function(d)
    char = d
   end)
-torso = char:FindFirstChild("Torso")
+torso = char:WaitForChild("Torso")
 local TOR = OwnerCharacter:WaitForChild("Torso")
 local RA = OwnerCharacter:WaitForChild("Right Arm")
 local LA = OwnerCharacter:WaitForChild("Left Arm")
@@ -862,13 +862,13 @@ Hum.PlatformStand = true
       if lp.Name==tostring(REP.."1") then
       align(torso, TOR, Vector3.new(0, 3.5, 0))
       elseif lp.Name==tostring(REP.."2") then
-      align(torso2, RA, Vector3.new(1.8, 0, 0))
+      align(torso, RA, Vector3.new(1.8, 0, 0))
       elseif lp.Name==tostring(REP.."3") then
-      align(torso3, LA, Vector3.new(-1.8, 0, 0))
+      align(torso, LA, Vector3.new(-1.8, 0, 0))
       elseif lp.Name==tostring(REP.."4") then
-      align(torso4, LL, Vector3.new(-0.8, -2.2, 0))
+      align(torso, LL, Vector3.new(-0.8, -2.2, 0))
       elseif lp.Name==tostring(REP.."7") then
-      align(torso5, RL, Vector3.new(0.8, -2.2, 0))
+      align(torso, RL, Vector3.new(0.8, -2.2, 0))
       end
 end
 
