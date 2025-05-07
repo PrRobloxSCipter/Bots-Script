@@ -773,7 +773,7 @@ local function align(part, tar, pos)
   ao.Responsiveness = 200
   ao.MaxTorque = math.huge
 end
-align(root, ownerRoot, ownerRoot * RANDOM)
+align(root, ownerRoot, ownerRoot.CFrame * RANDOM)
 end
 
 local CLI = false
