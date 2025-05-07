@@ -843,7 +843,7 @@ local function WATERHAX()
        end
 end
 local ttt = false
-local function Titan()
+local function Titan(fo)
   local REP = "leBotDeRoblox_"
   OwnerPlayer.CharacterAdded:Connect(function(d)
     OwnerCharacter = d
@@ -878,7 +878,7 @@ Hum.PlatformStand = true
       ao.Responsiveness = 200
       ao.MaxTorque = math.huge
    end
-
+if not fo then
       if lp.Name==tostring(REP.."1") then
       align(torso, TOR, Vector3.new(0, 3.5, 0))
       elseif lp.Name==tostring(REP.."2") then
@@ -890,6 +890,19 @@ Hum.PlatformStand = true
       elseif lp.Name==tostring(REP.."7") then
       align(torso, RL, Vector3.new(0.8, -2.2, 0))
       end
+    elseif fo and fo == "1" then
+        if lp.Name==tostring(REP.."1") then
+        align(torso, TOR, Vector3.new(0, 5.5, -4))
+        elseif lp.Name==tostring(REP.."2") then
+        align(torso, RA, Vector3.new(1.8, 2, -4))
+        elseif lp.Name==tostring(REP.."3") then
+        align(torso, LA, Vector3.new(-1.8, 2, -4))
+        elseif lp.Name==tostring(REP.."4") then
+        align(torso, LL, Vector3.new(-0.8, 2.2, -4))
+        elseif lp.Name==tostring(REP.."7") then
+        align(torso, RL, Vector3.new(0.8, 2.2, -4))
+        end
+    end
 end
 
 connection = OwnerPlayer.Chatted:Connect(function(msg)
