@@ -962,8 +962,11 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             FOLLOW = false
                           elseif msg == "/tool" then
                             Tool()
-                          elseif msg == "/parts" then
-                            TeleportPart()
+                          elseif msg:sub(1,6) == "/parts" then
+                            local NIGGA = msg:sub(8)
+                            if #NIGGA > 0 then
+                            TeleportPart(tonumber(NIGGA))
+                            end
                           elseif msg == "/re" then
                             reset()
                           elseif msg == "/sound" then
