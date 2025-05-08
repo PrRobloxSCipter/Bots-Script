@@ -878,7 +878,7 @@ Hum.PlatformStand = true
       ao.Responsiveness = 200
       ao.MaxTorque = math.huge
    end
-if fo == "" then
+if fo == nil then
       if lp.Name==tostring(REP.."1") then
       align(torso, TOR, Vector3.new(0, 3.5, 0))
       elseif lp.Name==tostring(REP.."2") then
@@ -1044,7 +1044,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             ATTACK=true;wait()ATTACK=false
                           elseif msg == "/credit" then
                             WATERHAX()
-                          elseif msg:sub(1,6)=="/titan" then
+                          elseif msg:sub(1,6)== "/titan" then
                                  local hax = msg(8)
                                  if #hax > 0 then
                                    Titan(hax)
