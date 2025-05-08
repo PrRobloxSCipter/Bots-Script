@@ -182,17 +182,41 @@ coroutine.wrap(function()
   lp.SimulationRadius = math.huge
   end
   end)()
-local function TeleportPart()
+local function TeleportPart(method)
   lp.CharacterAdded:Connect(function(CHAR)
     char = CHAR
     task.wait()
   end)
-
+if method == 1 then
   for i,v in next, workspace:GetDescendants() do
     if v:IsA("Part") and v.Anchored == false then
       v.CFrame = char:WaitForChild("HumanoidRootPart").CFrame
     end
   end
+elseif method == 2 then
+  for i,v in next, workspace:GetDescendants() do
+    if v:IsA("BodyPosition") and v.Name == "HACKED " then
+      v:Destroy()
+    end
+  end
+
+   for i,v in next, workspace:GetDescendants() do
+    if v:IsA("BasePart") or v:IsA("BasePart") then
+    local BG = Instance.new("BodyPosition")
+    BG.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+    BG.D = 150
+    BG.P = 1000
+    BG.Name = "HACKED "
+    coroutine.wrap(function()
+      while task.wait() do
+         BG.Position = char:FindFirstChild("HumanoidRootPart").Position
+      end
+    end)()
+    BG.Parent = v
+  end
+
+end
+end
   --
 end
 reset=function()
