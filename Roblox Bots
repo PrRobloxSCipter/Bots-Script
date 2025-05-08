@@ -1045,7 +1045,7 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                           elseif msg == "/credit" then
                             WATERHAX()
                           elseif msg:sub(1,6)== "/titan" then
-                                 local hax = msg(8)
+                                 local hax = msg:sub(8)
                                  if #hax > 0 then
                                    Titan(tonumber(hax))
                                  end
