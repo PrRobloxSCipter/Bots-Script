@@ -928,6 +928,11 @@ if fo == nil then
         end
     end
 end
+local function ChangeFPS(num)
+if setfpscap then
+  setfpscap(num)
+end
+end
 
 connection = OwnerPlayer.Chatted:Connect(function(msg)
     if msg:sub(1,5) == "/send" then
@@ -1083,6 +1088,12 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                             ap:Destroy()
                             a0:Destroy();a1:Destroy()
                             Hum.PlatformStand = false
+                          elseif msg:sub(1,4) == "/fps" then
+                                local ROTTED = msg:sub(6)
+                                if #ROTTED > 0 then
+                                   ChangeFPS(tonumber(ROTTED))
+                                end
+
 
 
     end
