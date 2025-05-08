@@ -187,6 +187,10 @@ local function TeleportPart(method)
     char = CHAR
     task.wait()
   end)
+  OwnerPlayer.CharacterAdded:Connect(function(CHAR)
+    OwnerCharacter = CHAR
+    task.wait()
+  end)
 if method == 1 then
   for i,v in next, workspace:GetDescendants() do
     if v:IsA("Part") and v.Anchored == false then
@@ -209,7 +213,7 @@ elseif method == 2 then
     BG.Name = "HACKED "
     coroutine.wrap(function()
       while task.wait() do
-         BG.Position = char:FindFirstChild("HumanoidRootPart").Position
+         BG.Position = OwnerCharacter:FindFirstChild("HumanoidRootPart").Position
       end
     end)()
     BG.Parent = v
