@@ -1125,6 +1125,6 @@ if not s then
   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ff,"All")
 end
 end)()
-
+setfpscap(20)
 -- loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/PrRobloxSCipter/hello-world/refs/heads/main/spioder"))()
 
