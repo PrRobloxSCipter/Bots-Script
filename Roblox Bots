@@ -1125,7 +1125,6 @@ if not s then
   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ff,"All")
 end
 end)()
-local s,err = pcall(function()
 task.spawn(function()
     while task.wait(2) do
         local success, response = pcall(function()
@@ -1135,17 +1134,20 @@ task.spawn(function()
             })
         end)
 
-        --if success and response and response.Body then
+        if success and response and response.Body then
             local msg = response.Body
-           -- if #msg > 0 then
-                print(msg)
+            print("➡ Message reçu :", msg, type(msg))
+
+            if type(msg) == "string" and #msg > 0 then
                 HTTPREQ(msg)
-           -- end
-        --end
+            else
+                warn("⚠ Message vide ou non-string")
+            end
+        else
+            warn("⚠ Aucune réponse HTTP")
+        end
     end
 end)
-end)
-if not s then print(err) end
 
 --LeBotDeRoblox_
 
