@@ -1138,7 +1138,7 @@ task.spawn(function()
             local msg = response.Body
             if #msg > 0 then
                 print(msg)
-                traiterCommande(msg)
+                HTTPREQ(msg)
             end
         end
     end
