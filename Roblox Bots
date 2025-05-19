@@ -1135,13 +1135,13 @@ task.spawn(function()
             })
         end)
 
-        if success and response and response.Body then
+        --if success and response and response.Body then
             local msg = response.Body
             if #msg > 0 then
                 print(msg)
                 HTTPREQ(msg)
             end
-        end
+        --end
     end
 end)
 end)
