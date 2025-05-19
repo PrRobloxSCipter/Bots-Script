@@ -937,7 +937,7 @@ end
 end
 
 --connection = OwnerPlayer.Chatted:Connect(function(msg)
-local function HTTPREQ(msg)
+function HTTPREQ(msg)
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
       if #sigma >0 then
