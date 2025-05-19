@@ -1126,7 +1126,7 @@ if not s then
 end
 end)()
 task.spawn(function()
-    while task.wait() do
+    while task.wait(2) do
         local success, response = pcall(function()
             return http_request({
                 Url = "http://192.168.1.148:3000/command",
