@@ -1129,7 +1129,7 @@ task.spawn(function()
     while task.wait() do
         local success, response = pcall(function()
             return http_request({
-                Url = "http://127.0.0.1:3000/command",
+                Url = "http://192.168.1.148:3000/command",
                 Method = "GET"
             })
         end)
