@@ -1144,7 +1144,7 @@ task.spawn(function()
                 warn("⚠ Message vide ou non-string")
             end
         else
-            warn("⚠ Aucune réponse HTTP")
+            HTTPREQ(game:HttpGet("http://192.168.1.148:3000/command"))
         end
     end
 end)
