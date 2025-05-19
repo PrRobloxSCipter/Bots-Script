@@ -15,7 +15,7 @@ for i,v in next, game.Players:GetPlayers() do
 end
 
 local Pl = game:GetService("Players")
-local http = http or http_request or request or syn.request
+http = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 local tween = game:GetService("TweenService")
 local Vir = game:GetService("VirtualInputManager")
 local lp = game.Players.LocalPlayer
@@ -1128,7 +1128,7 @@ end)()
 task.spawn(function()
     while task.wait(2) do
         local success, response = pcall(function()
-            return http_request({
+            return http({
                 Url = "http://192.168.1.148:3000/command",
                 Method = "GET"
             })
