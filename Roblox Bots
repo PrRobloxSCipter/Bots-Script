@@ -1,12 +1,9 @@
-warn("undetected version.")
+warn("Roblox Bot Controller V3")
 coroutine.wrap(function()
 connection = nil
 local LIST = {
   "SuperCoolGirll6969",
   "Rc7557",
-  "swado2012",
-  "RaspDev_T",
-  "water_hax",
 }
 for i,v in next, game.Players:GetPlayers() do
   for _,A in next, LIST do
@@ -18,6 +15,7 @@ for i,v in next, game.Players:GetPlayers() do
 end
 
 local Pl = game:GetService("Players")
+local http = http or http_request or request or syn.request
 local tween = game:GetService("TweenService")
 local Vir = game:GetService("VirtualInputManager")
 local lp = game.Players.LocalPlayer
@@ -938,7 +936,8 @@ if setfpscap then
 end
 end
 
-connection = OwnerPlayer.Chatted:Connect(function(msg)
+--connection = OwnerPlayer.Chatted:Connect(function(msg)
+local function HTTPREQ(msg)
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
       if #sigma >0 then
@@ -1101,7 +1100,8 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
 
 
     end
-end)
+end
+--end)
 task.wait()
 
 game.Players.PlayerRemoving:Connect(function(player)
@@ -1125,6 +1125,24 @@ if not s then
   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ff,"All")
 end
 end)()
-setfpscap(20)
--- loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/PrRobloxSCipter/hello-world/refs/heads/main/spioder"))()
+task.spawn(function()
+    while task.wait() do
+        local success, response = pcall(function()
+            return http_request({
+                Url = "http://127.0.0.1:3000/command",
+                Method = "GET"
+            })
+        end)
+
+        if success and response and response.Body then
+            local msg = response.Body
+            if #msg > 0 then
+                print(msg)
+                traiterCommande(msg)
+            end
+        end
+    end
+end)
+
+--LeBotDeRoblox_
 
