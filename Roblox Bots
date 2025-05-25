@@ -4,7 +4,7 @@ connection = nil
 local LIST = {
   "SuperCoolGirll6969",
   "Rc7557",
-  "Plugina2"
+  "water_haxx"
 }
 for i,v in next, game.Players:GetPlayers() do
   for _,A in next, LIST do
