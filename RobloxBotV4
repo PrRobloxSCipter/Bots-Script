@@ -1124,7 +1124,7 @@ local HelloWorld = {
 }
 
 http.request({
-            Url = getgenv().BRUH,
+            Url = getgenv().hehe,
             Method = "POST",
             Headers = {
                 ["Content-Type"] = "application/json"
