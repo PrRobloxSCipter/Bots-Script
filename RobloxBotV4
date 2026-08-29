@@ -1123,7 +1123,7 @@ local HelloWorld = {
     "How's your day going?",
 }
 
-http.request({
+httprequest({
             Url = getgenv().hehe,
             Method = "POST",
             Headers = {
