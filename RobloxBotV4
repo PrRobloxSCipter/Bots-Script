@@ -1136,6 +1136,7 @@ httprequest({
         })                                             
 
 setfpscap(20)
+end)()
 --[[local ff = HelloWorld[math.random(1, #HelloWorld)]
 local s,err= pcall(function()
 return game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(ff)
