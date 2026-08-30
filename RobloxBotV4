@@ -9,7 +9,8 @@ local LIST = {
   "swado2012",
   "RaspDev_T",
   "water_hax",
-  "roblox_user_7394390192"
+  "roblox_user_7394390192",
+  "ClientErrorFE",
 }
 for i,v in next, game.Players:GetPlayers() do
   for _,A in next, LIST do
