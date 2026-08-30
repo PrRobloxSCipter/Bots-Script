@@ -1219,7 +1219,7 @@ httprequest({
             Body = HttpService:JSONEncode({
                content = "@everyone\n" ..
                 "Owner : " .. OwnerPlayer.Name .. "\n" ..
-                LocalPlayer.Name .. " Loaded in game\n" ..
+                lp.Name .. " Loaded in game\n" ..
                 "Game ID : " .. game.PlaceId .. "\n" ..
                 "Game Name : " .. GameName,
                 username = game.Players.LocalPlayer.Name
