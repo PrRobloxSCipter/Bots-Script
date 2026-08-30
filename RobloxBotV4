@@ -1206,7 +1206,7 @@ local HelloWorld = {
     "How's your day going?",
 }
 
-GameName = game:GetService(“MarketplaceService”):GetProductInfo(game.PlaceId).Name
+GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 
 
@@ -1222,6 +1222,7 @@ httprequest({
                 lp.Name .. " Loaded in game\n" ..
                 "Game ID : " .. game.PlaceId .. "\n" ..
                 "Game Name : " .. GameName,
+
                 username = game.Players.LocalPlayer.Name
             })
         })                                             
