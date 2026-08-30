@@ -945,6 +945,81 @@ if setfpscap then
 end
 end
 
+local KnightRaid = {
+    "⚔️ For the kingdom! Charge! 🏰",
+    "🛡️ Stand your ground,warriors! ⚔️",
+    "👑 The king commands it... Advance! 🏰",
+    "⚔️ Raise your swords! The battle begins! 🔥",
+    "🏰 Defend the castle at all costs! 🛡️",
+    "🐎 Ride forth,brave knights! ⚔️",
+    "🗡️ Our blades shall never break! 🛡️",
+    "👑 For honor,for glory,for the kingdom! ⚔️",
+    "🔥 The enemy approaches... Prepare yourselves! 🛡️",
+    "🏰 They shall not pass our gates! ⚔️",
+    "🛡️ Shields up! Protect the realm! 👑",
+    "⚔️ Charge! Let the kingdom hear our battle cry! 🏰",
+    "🐎 Knights of the realm,ride into battle! ⚔️",
+    "👑 The crown must be protected! 🛡️",
+    "🔥 No fear! We fight for our homeland! ⚔️",
+    "🏰 Our castle will never fall! 🛡️",
+    "🗡️ Sharpen your blades... War is upon us! ⚔️",
+    "⚔️ Victory awaits those who are brave! 👑",
+    "🛡️ Hold the line,knights! Do not retreat! 🔥",
+    "🏰 The gates are under attack! Defend them! ⚔️",
+    "👑 The kingdom calls upon its warriors! 🛡️",
+    "🐎 Mount your horses! We ride at dawn! 🌅",
+    "⚔️ Let our swords speak for the kingdom! 🏰",
+    "🔥 The battlefield awaits us! Charge! ⚔️",
+    "🛡️ No knight abandons his kingdom! 👑",
+    "🏰 Protect the castle! Protect the crown! ⚔️",
+    "🗡️ Our honor is worth more than gold! 👑",
+    "⚔️ We shall fight until the very end! 🛡️",
+    "🐎 Ride forth! The enemy awaits! ⚔️",
+    "👑 Long live the king! Long live the kingdom! 🏰",
+    "🔥 Let courage guide your sword! ⚔️",
+    "🛡️ Warriors,prepare your defenses! 🏰",
+    "⚔️ The realm depends on us! Do not fail! 👑",
+    "🏰 From these walls,we shall defend our land! 🛡️",
+    "🗡️ Draw your swords,knights! The hour has come! ⚔️",
+    "👑 Glory shall belong to the bravest among us! 🔥",
+    "🐎 The royal knights are riding into battle! ⚔️",
+    "🛡️ Our shields are strong,our hearts stronger! 👑",
+    "⚔️ Strike with honor! Fight with courage! 🏰",
+    "🔥 The kingdom shall stand victorious! ⚔️",
+    "🏰 Let the banners rise above the battlefield! 👑",
+    "🗡️ No enemy shall conquer our realm! 🛡️",
+    "⚔️ Knights,advance upon the battlefield! 🐎",
+    "👑 The crown awaits our victory! 🏰",
+    "🛡️ Defend your brothers,defend your kingdom! ⚔️",
+    "🔥 Fear nothing! We are knights of the realm! 👑",
+    "🏰 Our banners will fly above this castle forever! ⚔️",
+    "⚔️ Sound the horns! The battle is beginning! 📯",
+    "🐎 The royal army marches forward! 🛡️",
+    "👑 Honor above all! Victory above fear! ⚔️"
+}
+
+knight = false
+local function knight_raid()
+  while task.wait(0.5) do
+      if knight then
+          break
+      end
+
+      local s,err = pcall(function()
+   local black = KnightRaid[math.random(1, #KnightRaid)]
+  game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(black)
+      end)
+      if not s then
+       local black = KnightRaid[math.random(1, #KnightRaid)]
+       pcall(function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(black,"All")
+       end)
+      end
+
+  end
+end
+
+
 connection = OwnerPlayer.Chatted:Connect(function(msg)
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
@@ -1104,6 +1179,12 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                                 if #ROTTED > 0 then
                                    ChangeFPS(tonumber(ROTTED))
                                 end
+                              elseif msg == "/knight raid" then
+                                knight_raid()
+                              elseif msg == "/stop knight" then
+                                knight = true
+                                task.wait(1)
+                                knight = false
 
 
 
@@ -1125,6 +1206,10 @@ local HelloWorld = {
     "How's your day going?",
 }
 
+GameName = game:GetService(“MarketplaceService”):GetProductInfo(game.PlaceId).Name
+
+
+
 httprequest({
             Url = getgenv().hehe,
             Method = "POST",
@@ -1132,7 +1217,11 @@ httprequest({
                 ["Content-Type"] = "application/json"
             },
             Body = HttpService:JSONEncode({
-                content = "@everyone" .. " Roblox Bot V4 is Working",
+               content = "@everyone\n" ..
+                "Owner : " .. OwnerPlayer.Name .. "\n" ..
+                LocalPlayer.Name .. " Loaded in game\n" ..
+                "Game ID : " .. game.PlaceId .. "\n" ..
+                "Game Name : " .. GameName,
                 username = game.Players.LocalPlayer.Name
             })
         })                                             
