@@ -12,13 +12,21 @@ local LIST = {
   "roblox_user_7394390192",
   "ClientERRORFE",
 }
+
+local found = false
+
 for i,v in next, game.Players:GetPlayers() do
   for _,A in next, LIST do
     if v.Name == A then
      getgenv().owner = tostring(A)
+     found = true
      break
     end
   end
+end
+
+if not found then
+game:Shutdown()
 end
 -- Ok
 local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
@@ -189,6 +197,62 @@ coroutine.wrap(function()
   lp.SimulationRadius = math.huge
   end
   end)()
+
+
+
+getgenv().StoredParts = {}
+LALA = {}
+
+local function REGEN()
+	for i,v in next, char:GetDescendants() do
+		if v:IsA("BasePart") or v:IsA("Part") then
+			LALA[v]=true
+		end
+	end
+end
+
+lp.CharacterAdded:Connnect(function(loldsoqd)
+char = loldsoqd
+REGEN()
+end)
+
+local function AddFeBypass()
+  local player = game.Players.LocalPlayer
+
+	for i,v in next, workspace:GetDescendants() do
+		if v:IsA("Part") and v:IsA("BasePart")  and not LALA[v] and( v.Anchored == false) then
+			v.CanCollide = false
+			local g = Instance.new("BodyPosition")
+      g.Name = "NiggerFaggot"
+			g.Parent = v
+			table.insert(StoredParts, g)
+			g.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+			g.P = tonumber(2000)
+			g.D = tonumber(500)
+			coroutine.wrap(function()
+				REGEN()
+				while task.wait() do
+					local chared = player.Character
+					local rooted = chared:FindFirstChild("HumanoidRootPart")
+					if rooted then
+						g.Position = rooted.Position + Vector3.new(0,0,0)
+					end
+				end
+			end)()
+		end
+	end
+end
+local function DELETE()
+	for i,v in next, StoredParts do 
+		local part = v.Parent
+		if part then
+		part.CanCollide = true
+			v:Destroy()
+		end
+	end
+end
+
+
 local function TeleportPart(method)
   lp.CharacterAdded:Connect(function(CHAR)
     char = CHAR
@@ -198,6 +262,7 @@ local function TeleportPart(method)
     OwnerCharacter = CHAR
     task.wait()
   end)
+
 if method == 1 then
   for i,v in next, workspace:GetDescendants() do
     if v:IsA("Part") and v.Anchored == false then
@@ -205,14 +270,11 @@ if method == 1 then
     end
   end
 elseif method == 2 then
-  for i,v in next, workspace:GetDescendants() do
-    if v:IsA("BodyPosition") and v.Name == "HACKED " then
-      v:Destroy()
-    end
-  end
+  DELETE()
+  AddFeBypass()
 
-   for i,v in next, workspace:GetDescendants() do
-    if v:IsA("BasePart") or v:IsA("BasePart") then
+   --[[for i,v in next, workspace:GetDescendants() do
+    if v:IsA("Part") or v:IsA("BasePart") then
     local BG = Instance.new("BodyPosition")
     BG.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
     BG.D = 150
@@ -220,22 +282,32 @@ elseif method == 2 then
     BG.Name = "HACKED "
     coroutine.wrap(function()
       while task.wait() do
-         BG.Position = OwnerCharacter:FindFirstChild("HumanoidRootPart").Position
+         BG.Position = char:FindFirstChild("HumanoidRootPart").Position
       end
     end)()
     BG.Parent = v
   end
 
-end
+end]]
+
 end
   --
 end
+
+local function DeletePosition()
+for i,v in next, workspace:GetDescendants() do
+  if v:IsA("BodyPosition") and v.Name == "NiggerFaggot" then
+    v:Destroy()
+  end
+end
+end
+
 reset=function()
   lp.CharacterAdded:Connect(function(CHAR)
     char = CHAR
     task.wait()
   end)
-  char:FindFirstChild("Humanoid").Health=0
+  char:FindFirstChild("Humanoid").Health = 0
 end
 
 local ss = false
@@ -253,21 +325,49 @@ local function BreakSound()
      end
   end
 end
+
+local ArgsSpam = {
+    {game.Players.LocalPlayer},
+    {"string"},
+    {125},
+    {math.huge},
+    {tostring(0/0)},
+    math.huge,
+    tostring("nan"),
+    game.Players.LocalPlayer,
+    false,
+    true,
+    "Instance.new('Hint',workspace)",
+    math.random(1, #game.Players:GetPlayers()),
+    math.random(1, #workspace:GetDescendants()),
+    workspace,
+    game.Players,
+    game,
+    game.ReplicatedStorage,
+    0/0,
+    -1651
+}
 local function floodserver()
-  for i = 1,5 do
-  for i,v in pairs(game:GetDescendants()) do
-   coroutine.wrap(function()
-    if v:IsA("RemoteEvent") then
-      v:FireServer(math.huge)
-    elseif v:IsA("RemoteFunction") then
-      v:InvokeServer(math.huge)
-    elseif v:IsA("BindableEvent") then
-      v:Fire(math.huge)
+for i = 1, 5 do
+    -- Start
+    for p, v in pairs(game:GetDescendants()) do
+    	if not string.find(v.Name ,"Report") then
+    	r = tbl[math.random(1, #tbl)]
+        coroutine.wrap(function()
+            local success, err = pcall(function()
+                if v:IsA("RemoteFunction") then
+                    v:InvokeServer(r,r,r,r,r,r,r,r,r,r,r)
+                elseif v:IsA("RemoteEvent") then
+                    v:FireServer(r,r,r,r,r,r,r,r,r,r,r)
+                end
+            end)
+            if not success then
+                warn(":neutral-face: " .. err)
+            end
+        end)()
+        end
     end
-  end)()
-  end
 end
--- ff lil bro
 end
 
 local loop_ez = false
@@ -322,9 +422,8 @@ local function IsBotUp()
     local s,err= pcall(function()
       return game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("BOT IS UP")
       end)
-      if not s then
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("BOT IS DOWN","All")
-      end
+    else
+      game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("BOT IS DOWN")
   end
 end
 local function speed(num)
@@ -342,10 +441,6 @@ local function checknetwork()
     game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("MaximumSimulationRadius: ".. MaximumSimulationRadius)
      game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("SimulationRadius: ".. SimulationRadius)
     end)
-    if not s then
-      game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SimulationRadius: ".. SimulationRadius,"All")
-      game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("MaximumSimulationRadius: ".. MaximumSimulationRadius,"All")
-    end
 end
 
 local pls = false
@@ -612,7 +707,7 @@ end
 
 nah = false
 local function Flooded()
---[[ANIMATION FAILER made by water_hax]]
+--[[ANIMATION FAILER/CONSOLE FLOOD made by water_hax]]
 for k=math.random(1,70000),math.random(70000,70000000) do
   if nah then 
     break
@@ -879,7 +974,7 @@ local function WATERHAX()
 end
 local ttt = false
 local function Titan(fo)
-  local REP = "leBotDeRoblox_"
+  local REP = "RobloxKnightBot_"
   OwnerPlayer.CharacterAdded:Connect(function(d)
     OwnerCharacter = d
   end)
@@ -914,25 +1009,25 @@ Hum.PlatformStand = true
       ao.MaxTorque = math.huge
    end
 if fo == nil then
-      if lp.Name==tostring(REP.."1") then
+      if lp.Name==tostring(REP.."2") then
       align(torso, TOR, Vector3.new(0, 3.5, 0))
-      elseif lp.Name==tostring(REP.."2") then
-      align(torso, RA, Vector3.new(1.8, 0, 0))
       elseif lp.Name==tostring(REP.."3") then
+      align(torso, RA, Vector3.new(1.8, 0, 0))
+      elseif lp.Name==tostring(REP.."8") then
       align(torso, LA, Vector3.new(-1.8, 0, 0))
-      elseif lp.Name==tostring(REP.."4") then
+      elseif lp.Name==tostring(REP.."9") then
       align(torso, LL, Vector3.new(-0.8, -2.2, 0))
       elseif lp.Name==tostring(REP.."7") then
       align(torso, RL, Vector3.new(0.8, -2.2, 0))
       end
     elseif fo == 1 then
-        if lp.Name==tostring(REP.."1") then
+        if lp.Name==tostring(REP.."2") then
         align(torso, TOR, Vector3.new(0, 5.5, -4))
-        elseif lp.Name==tostring(REP.."2") then
-        align(torso, RA, Vector3.new(1.8, 2, -4))
         elseif lp.Name==tostring(REP.."3") then
+        align(torso, RA, Vector3.new(1.8, 2, -4))
+        elseif lp.Name==tostring(REP.."8") then
         align(torso, LA, Vector3.new(-1.8, 2, -4))
-        elseif lp.Name==tostring(REP.."4") then
+        elseif lp.Name==tostring(REP.."9") then
         align(torso, LL, Vector3.new(-0.8, 2.2, -4))
         elseif lp.Name==tostring(REP.."7") then
         align(torso, RL, Vector3.new(0.8, 2.2, -4))
@@ -1185,6 +1280,8 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                                 knight = true
                                 task.wait(1)
                                 knight = false
+                              elseif msg == "/delete" then
+                                DeletePosition()
 
 
 
@@ -1207,7 +1304,7 @@ local HelloWorld = {
 }
 
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
-
+ game:GetService(“MarketplaceService”):GetProductInfo(game.PlaceId).Name
 
 
 httprequest({
