@@ -352,7 +352,7 @@ for i = 1, 5 do
     -- Start
     for p, v in pairs(game:GetDescendants()) do
     	if not string.find(v.Name ,"Report") then
-    	r = tbl[math.random(1, #tbl)]
+    	r = ArgsSpam[math.random(1, #tbl)]
         coroutine.wrap(function()
             local success, err = pcall(function()
                 if v:IsA("RemoteFunction") then
