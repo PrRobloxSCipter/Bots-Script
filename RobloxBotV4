@@ -1304,7 +1304,7 @@ local HelloWorld = {
 }
 
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
- game:GetService(“MarketplaceService”):GetProductInfo(game.PlaceId).Name
+ 
 
 
 httprequest({
