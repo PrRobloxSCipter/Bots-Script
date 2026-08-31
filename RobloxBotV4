@@ -974,7 +974,7 @@ local function WATERHAX()
 end
 local ttt = false
 local function Titan(fo)
-  local REP = "RobloxKnightBot_"
+  local REP = "RobloxKnightBOT_"
   OwnerPlayer.CharacterAdded:Connect(function(d)
     OwnerCharacter = d
   end)
