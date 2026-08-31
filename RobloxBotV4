@@ -211,7 +211,7 @@ local function REGEN()
 	end
 end
 
-lp.CharacterAdded:Connnect(function(loldsoqd)
+lp.CharacterAdded:Connect(function(loldsoqd)
 char = loldsoqd
 REGEN()
 end)
