@@ -66,11 +66,12 @@ local function checkHttp2()
 			coroutine.wrap(function()
         local s,err = pcall(function()
              firesignal(OwnerPlayer.Chatted, tostring(raw2))
+        end)
              if not s then
               warn("nah")
               replicatesignal(OwnerPlayer.Chatted, tostring(raw2))
              end
-            end)()
+        end)()
             Oldcommand = raw2
 		end
 	  end
