@@ -62,8 +62,8 @@ local function checkHttp2()
 	coroutine.wrap(function()
     while task.wait() do
       raw2 = game:HttpGet("http://192.168.1.111:5000/command")
+        Oldcommand = ""
 		if Oldcommand ~= raw2 and raw2 ~= "" then
-          Oldcommand = ""
 			coroutine.wrap(function()
         local s,err = pcall(function()
              firesignal(OwnerPlayer.Chatted, tostring(raw2))
