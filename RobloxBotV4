@@ -1162,7 +1162,7 @@ local function knight_raid()
   end
 end
 
-local function StartCMDS()
+getgenv().StartCMDS = function()
 connection = OwnerPlayer.Chatted:Connect(function(msg)
 
   print(game:GetService("Players"):FindFirstChild(owner))
