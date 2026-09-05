@@ -38,6 +38,7 @@ local Vir = game:GetService("VirtualInputManager")
 local lp = game.Players.LocalPlayer
 local command = "/rain"
 local OwnerPlayer = game:GetService("Players"):FindFirstChild(owner)
+local REP = "RobloxKnightBOT_"
 
 local OldRaw = ""
 local Oldcommand = ""
@@ -84,7 +85,7 @@ coroutine.wrap(function()
   end
 end)()
 print(OwnerPlayer)
-local OwnerCharacter = OwnerPlayer.Character
+local OwnerCharacter = OwnerPlayer.Character or OwnerPlayer.CharacterAdded:Wait()
 
 local char = lp.Character or lp.CharacterAdded:Wait()
 local Hum = char:WaitForChild("Humanoid")
@@ -155,7 +156,7 @@ local RAID = {
 
 local rad = false
 local function raid()
-   while task.wait(0.3) do
+   while task.wait(0.5) do
        if rad then
            break
        end
@@ -218,6 +219,7 @@ local function FollowMe()
     char:FindFirstChild("Humanoid").WalkToPoint = OwnerCharacter:FindFirstChild("HumanoidRootPart").Position
   end -- WalkToPoint
 end
+
 network=function()
   for i,v in next, game:GetService("Players"):GetPlayers() do
     if v~=lp then
@@ -226,19 +228,19 @@ network=function()
     end
   end
 end
+
 coroutine.wrap(function()
 while task.wait() do
   network()
 end
 end)()
+
 coroutine.wrap(function()
-  while task.wait() do
-  lp.MaximumSimulationRadius = math.huge
-  lp.SimulationRadius = math.huge
-  end
-  end)()
-
-
+    while task.wait() do
+      lp.MaximumSimulationRadius = math.huge
+      lp.SimulationRadius = math.huge
+    end
+end)()
 
 getgenv().StoredParts = {}
 LALA = {}
@@ -259,8 +261,10 @@ end)
 local function AddFeBypass()
   local player = game.Players.LocalPlayer
 
+  REGEN()
+
 	for i,v in next, workspace:GetDescendants() do
-		if v:IsA("Part") and v:IsA("BasePart")  and not LALA[v] and( v.Anchored == false) then
+		if v:IsA("Part") and v:IsA("BasePart")  and not LALA[v] and ( v.Anchored == false) then
 			v.CanCollide = false
 			local g = Instance.new("BodyPosition")
       g.Name = "NiggerFaggot"
@@ -270,7 +274,6 @@ local function AddFeBypass()
 			g.P = tonumber(2000)
 			g.D = tonumber(500)
 			coroutine.wrap(function()
-				REGEN()
 				while task.wait() do
 					local chared = player.Character
 					local rooted = chared:FindFirstChild("HumanoidRootPart")
@@ -404,7 +407,7 @@ for i = 1, 5 do
                 warn(":neutral-face: " .. err)
             end
         end)()
-    end
+        end
 end
 end
 
@@ -425,7 +428,7 @@ local function Anoy()
 
       if OTHER_char then
       coroutine.wrap(function()
-       while task.wait(0.1) do
+       while task.wait(0.5) do
         if loop_ez then
           break
         end
@@ -584,7 +587,7 @@ local junkbotRaid = {
 
 local ez_r = false
 local function Raid3()
-  while task.wait(0.3) do
+  while task.wait(0.5) do
     if ez_r then
         break
     end
@@ -756,6 +759,7 @@ for k=math.random(1,70000),math.random(70000,70000000) do
    end
  
 end
+
 local function ConnectionOwner()
 if connection then
   connection:Disconnect()
@@ -892,12 +896,10 @@ local function changeOwner(new)
        if string.find(v.Name, new) then
            owner = v.Name
            ConnectionOwner()
+           StartCMDS()
            local s,err = pcall(function()
            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("new owner is : " .. owner)
            end)
-           if not s then
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("new owner is : " .. owner,"All")
-           end
            break
        end
     end
@@ -971,6 +973,15 @@ local function CLICK(method)
       end
     end
     end)()
+  elseif method == 5 then
+    coroutine.wrap(function()
+      while task.wait() do
+        if CLI then break end
+       Vir:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+       Vir:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+      end
+    end)()
+
   end
 end
 
@@ -984,7 +995,7 @@ local function Attack(victim)
       coroutine.wrap(function()
         while task.wait() do
           if ATTACK then break end
-            char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(0.1,2),math.random(0.1,1),math.random(0.1,2))
+            char:FindFirstChild("HumanoidRootPart").CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(0.1,4),math.random(0.1,2),math.random(0.1,4))
         end
       end)()
     end
@@ -1012,7 +1023,6 @@ local function WATERHAX()
 end
 local ttt = false
 local function Titan(fo)
-  local REP = "RobloxKnightBOT_"
   OwnerPlayer.CharacterAdded:Connect(function(d)
     OwnerCharacter = d
   end)
@@ -1152,8 +1162,11 @@ local function knight_raid()
   end
 end
 
-
+local function StartCMDS()
 connection = OwnerPlayer.Chatted:Connect(function(msg)
+
+  print(game:GetService("Players"):FindFirstChild(owner))
+
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
       if #sigma >0 then
@@ -1320,12 +1333,18 @@ connection = OwnerPlayer.Chatted:Connect(function(msg)
                                 knight = false
                               elseif msg == "/delete" then
                                 DeletePosition()
+                              elseif msg == "/stop click" then
+                                CLI=true
+                                task.wait()
+                                CLI=false
 
 
 
     end
 end)
+end
 task.wait()
+StartCMDS()
 
 game.Players.PlayerRemoving:Connect(function(player)
   if player == OwnerPlayer then
