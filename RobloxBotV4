@@ -894,7 +894,7 @@ end
 local function changeOwner(new)
   for i,v in next, game:GetService("Players"):GetPlayers() do
        if string.find(v.Name, new) then
-           owner = v.Name
+           getgenv().owner = v.Name
            ConnectionOwner()
            StartCMDS()
            local s,err = pcall(function()
@@ -1164,8 +1164,8 @@ end
 
 getgenv().StartCMDS = function()
 connection = OwnerPlayer.Chatted:Connect(function(msg)
-
-  print(game:GetService("Players"):FindFirstChild(owner))
+print(owner)
+print(game:GetService("Players"):FindFirstChild(owner))
 
     if msg:sub(1,5) == "/send" then
       local sigma = msg:sub(7)
