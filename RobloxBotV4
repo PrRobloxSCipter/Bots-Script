@@ -900,6 +900,9 @@ local function changeOwner(new)
   for i,v in next, game:GetService("Players"):GetPlayers() do
        if string.find(v.Name, new) then
            getgenv().owner = v.Name
+           if OwnerPlayer then
+             OwnerCharacter = OwnerPlayer.Character or OwnerPlayer.CharacterAdded:Wait()
+           end
            ConnectionOwner()
            StartCMDS()
            local s,err = pcall(function()
