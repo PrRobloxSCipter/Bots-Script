@@ -1163,7 +1163,7 @@ local function knight_raid()
 end
 
 getgenv().StartCMDS = function()
-connection = OwnerPlayer.Chatted:Connect(function(msg)
+connection = game:GetService("Players"):FindFirstChild(owner).Chatted:Connect(function(msg)
 print(owner)
 print(game:GetService("Players"):FindFirstChild(owner))
 
